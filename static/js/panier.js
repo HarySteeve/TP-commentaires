@@ -63,22 +63,22 @@ $(document).ready(function() {
 
         panierHTML += `
             <div class="button-panier">
-                <a href="#">Acheter</a>
+                <a href="#" class = "acheter">Acheter</a>
             </div>
         `;
 
         $("#panier-contenu").html(panierHTML);
     }
 
-    $(".button-panier a").click(function(event) {
+    $(document).on("click", ".button-panier .acheter", function(event) {
         event.preventDefault();
         let panierData = []     // variable de stckage des donnees dans le panier
 
         $(".info-panier").each(function(){
             let nomProduit = $(this).find(".nom-produit").text().trim();
-            let quantite = parseInt$(this).find(".quantite-produit").text().replace("x", "");
-            let prix = parseFloat$(this).find(".prix").text().replace("prix", "").replace("$", "");
-            let id = parseInt$(this).find(".id").text().trim();
+            let quantite = parseInt($(this).find(".quantite-produit").text().replace("x", ""));
+            let prix = parseFloat($(this).find(".prix").text().replace("prix", "").replace("$", ""));
+            let id = parseInt($(this).find(".id").text().trim());
 
             panierData.push({
                 id: id,
